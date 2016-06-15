@@ -66,28 +66,11 @@
     <module>zeppelin-interpreter</module>
     <module>zeppelin-zengine</module>
     <module>zeppelin-display</module>
-    <module>spark-dependencies</module>
-    <module>spark</module>
     <module>markdown</module>
     <module>angular</module>
     <module>shell</module>
-    <module>livy</module>
-    <module>hive</module>
-    <module>hbase</module>
-    <module>phoenix</module>
-    <module>postgresql</module>
-    <module>jdbc</module>
-    <module>tajo</module>
     <module>file</module>
-    <module>flink</module>
       <module>kompics</module>
-    <module>ignite</module>
-    <module>kylin</module>
-    <module>python</module>
-    <module>lens</module>
-    <module>cassandra</module>
-    <module>elasticsearch</module>
-    <module>alluxio</module>
     <module>zeppelin-web</module>
     <module>zeppelin-server</module>
     <module>zeppelin-distribution</module>
@@ -256,39 +239,6 @@
         </executions>
       </plugin>
 
-      <!-- Checkstyle plugin -->
-      <!--<plugin>-->
-        <!--<groupId>org.apache.maven.plugins</groupId>-->
-        <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
-        <!--<configuration>-->
-          <!--<configLocation>_tools/checkstyle.xml</configLocation>-->
-          <!--<enableRSS>false</enableRSS>->
-        <!-</configuration>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<id>checkstyle-fail-build</id>-->
-            <!--<phase>validate</phase>-->
-            <!--<goals>-->
-              <!--<goal>check</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<failOnViolation>true</failOnViolation>-->
-              <!--<excludes>org/apache/zeppelin/interpreter/thrift/*</excludes>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-          <!--<execution>-->
-            <!--<id>checkstyle-gen-html-report</id>-->
-            <!--<phase>install</phase>-->
-            <!--<goals>-->
-              <!--<goal>checkstyle-aggregate</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<excludes>org/apache/zeppelin/interpreter/thrift/*</excludes>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-        <!--</executions>-->
-      <!--</plugin>-->
-
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>2.7</version>
@@ -417,13 +367,6 @@
           </execution>
         </executions>
       </plugin>
-
-      <!--TODO(alex): make part of the build and reconcile conflicts <plugin>
-        <groupId>com.ning.maven.plugins</groupId> <artifactId>maven-duplicate-finder-plugin</artifactId>
-        <version>1.0.4</version> <executions> <execution> <id>default</id> <phase>verify</phase>
-        <goals> <goal>check</goal> </goals> </execution> </executions> <configuration>
-        <failBuildInCaseOfConflict>true</failBuildInCaseOfConflict> </configuration>
-        </plugin> -->
     </plugins>
 
     <pluginManagement>
@@ -535,12 +478,7 @@
             </execution>
           </executions>
         </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.13</version>
-        </plugin>
+          
 
         <plugin>
           <artifactId>maven-dependency-plugin</artifactId>
@@ -622,26 +560,6 @@
                     <ignore/>
                   </action>
                 </pluginExecution>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>
-                      org.apache.maven.plugins
-                    </groupId>
-                    <artifactId>
-                      maven-checkstyle-plugin
-                    </artifactId>
-                    <versionRange>
-                      [2.13,)
-                    </versionRange>
-                    <goals>
-                      <goal>checkstyle</goal>
-                      <goal>check</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore></ignore>
-                  </action>
-                </pluginExecution>
               </pluginExecutions>
             </lifecycleMappingMetadata>
           </configuration>
@@ -666,28 +584,6 @@
           <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
         </repository>
       </repositories>
-    </profile>
-
-    <!-- Geode can be enabled by -Pgeode. see https://issues.apache.org/jira/browse/ZEPPELIN-375 -->
-    <profile>
-      <id>geode</id>
-      <modules>
-        <module>geode</module>
-      </modules>
-    </profile>
-
-    <profile>
-      <id>r</id>
-      <modules>
-        <module>r</module>
-      </modules>
-    </profile>
-
-    <profile>
-      <id>scalding</id>
-      <modules>
-        <module>scalding</module>
-      </modules>
     </profile>
 
     <profile>

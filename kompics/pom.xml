@@ -64,12 +64,19 @@
         <kompics.version>0.9.2-SNAPSHOT</kompics.version>
         <kompics.scala.binary.version>2.11.8</kompics.scala.binary.version>
         <kompics.scala.version>2.11.8</kompics.scala.version>
+        <checkstyle.skip>true</checkstyle.skip>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>se.sics.kompics</groupId>
             <artifactId>kompics-scala_2.11</artifactId>
+            <version>${kompics.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>se.sics.kompics.simulator</groupId>
+            <artifactId>core</artifactId>
             <version>${kompics.version}</version>
         </dependency>
 
@@ -112,6 +119,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <version>2.12.0-M4</version>
         </dependency>
     </dependencies>
 
@@ -231,30 +243,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.scalastyle</groupId>
-                <artifactId>scalastyle-maven-plugin</artifactId>
-                <version>0.5.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <verbose>false</verbose>
-                    <failOnViolation>true</failOnViolation>
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <failOnWarning>false</failOnWarning>
-                    <sourceDirectory>${basedir}/src/main/scala</sourceDirectory>
-                    <testSourceDirectory>${basedir}/src/test/scala</testSourceDirectory>
-                    <configLocation>${project.basedir}/../_tools/scalastyle.xml</configLocation>
-                    <outputFile>${project.basedir}/target/scalastyle-output.xml</outputFile>
-                    <outputEncoding>UTF-8</outputEncoding>
-                </configuration>
             </plugin>
 
             <plugin>
